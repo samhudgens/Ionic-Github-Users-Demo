@@ -12,13 +12,10 @@ import { RestProvider } from "../../providers/rest/rest";
 export class FeedPage {
 
   users: any;
+  numberOfRepos: any;
 
   constructor(public navCtrl: NavController, public restProvider: RestProvider) {
     this.getUsers();
-
-    // this.http.get("https://api.github.com/users?since=135").map(res => res.json()).subscribe(data => {
-    //   this.users = data.data.children;
-    // });
   }
 
   getUsers() {
@@ -26,6 +23,14 @@ export class FeedPage {
     .then(data => {
       this.users = data;
       console.log(this.users);
+    });
+  }
+
+  getNumberOfRepos() {
+    this.restProvider.getNumberOfRepos()
+    .then(data => {
+      this.numberOfRepos = data;
+      console.log(this.numberOfRepos);
     });
   }
 

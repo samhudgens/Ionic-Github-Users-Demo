@@ -8,7 +8,14 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let user of users">
+      <img [src]="user.avatar_url" height="30" width="30" item-left />
       <p>{{user.login}}</p>
+
+      <p *ngFor="let repo of numberOfRepos">{{numberOfRepos}}</p>
+
+
+      <!-- <p *ngIf="user.getNumberOfRepos > 2" color="red">{{user.login}}</p>
+      <p *ngIf="user.getNumberOfRepos <= 2">{{user.login}}</p> -->
     </ion-item>
   </ion-list>
 </ion-content>
