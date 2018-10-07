@@ -15,19 +15,20 @@ export class FeedPage {
   numberOfRepos: any;
 
   users = [];
+  since = 0;
 
   constructor(public navCtrl: NavController, public restProvider: RestProvider) {
     this.getAllUsers();
   }
 
   getAllUsers() {
-    this.restProvider.getAllUsers()
+    this.restProvider.getAllUsers(this.since)
     .then(data => {
         for (let i = 0; i < data.length; i++) {
           this.users.push(data[i]);
         }
-        console.log(data);
-      console.log(this.users);
+        // this.since += 30;
+        console.log(this.users);
     });
   }
 
@@ -49,8 +50,9 @@ export class FeedPage {
 
 
   addUsersOnScroll(infiniteScroll) {
+    this.since += 30;
     console.log("Begin async operation");
-    this.restProvider.addUsersOnScroll()
+    this.restProvider.getAllUsers(this.since)
     .then(data => {
       console.log(data);
       setTimeout(() => {
@@ -60,9 +62,10 @@ export class FeedPage {
         console.log(this.users);
         console.log(data);
       console.log("Async operation has ended");
-      //addUsersOnScroll.complete();
+      // Messed up here way earlier, this was the problem. I commented out the line below because I was getting errors, but it was because I had put "addUsersOnScroll.complete" instead of infiniteScroll.complete
+      infiniteScroll.complete();
       }, 500);
     })
-
   }
+
 }

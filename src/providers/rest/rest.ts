@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Observable } from "rxjs/Observable";
+import "rxjs/add/operator/catch";
+import "rxjs/add/operator/map";
 
 /*
   Generated class for the RestProvider provider.
@@ -18,17 +20,26 @@ export class RestProvider {
     console.log('Hello RestProvider Provider');
   }
 
-  getAllUsers() {
+  // getAllUsers() {
+  //   return new Promise(resolve => {
+  //     this.http.get(this.apiUrl+"/users").subscribe(data => {
+  //       resolve(data);
+  //       // console.log(this.http.head(this.apiUrl+"/users"));
+  //     }, err => {
+  //       console.log(err);
+  //     });
+  //   });
+  // }
+
+  getAllUsers(since) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+"/users").subscribe(data => {
+      this.http.get(this.apiUrl+"/users?since="+since).subscribe(data => {
         resolve(data);
-        // console.log(this.http.head(this.apiUrl+"/users"));
       }, err => {
         console.log(err);
       });
     });
   }
-
 
   getNumberOfRepos() {
     return new Promise(resolve => {
@@ -50,19 +61,19 @@ export class RestProvider {
   //   });
   // }
 
-  addUsersOnScroll() {
-    this.userListCounter = 30;
-    return new Promise(resolve => {
-      console.log(this.apiUrl+"/users?since="+this.userListCounter);
-      this.http.get(this.apiUrl+"/users?since="+this.userListCounter)
-      .subscribe(data => {
-        resolve(data);
-        this.userListCounter += 30;
-        console.log(this.apiUrl+"/users?since="+this.userListCounter);
-      }, err => {
-        console.log(err);
-      });
-    });
-  }
+  // addUsersOnScroll() {
+  //   this.userListCounter = 30;
+  //   return new Promise(resolve => {
+  //     console.log(this.apiUrl+"/users?since="+this.userListCounter);
+  //     this.http.get(this.apiUrl+"/users?since="+this.userListCounter)
+  //     .subscribe(data => {
+  //       resolve(data);
+  //       this.userListCounter += 30;
+  //       console.log(this.apiUrl+"/users?since="+this.userListCounter);
+  //     }, err => {
+  //       console.log(err);
+  //     });
+  //   });
+  // }
 
 }
