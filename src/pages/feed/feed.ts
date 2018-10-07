@@ -30,6 +30,14 @@ export class FeedPage {
     });
   }
 
+  // getUsers() {
+  //   this.restProvider.getUsers()
+  //   .then(data => {
+  //     this.users = data;
+  //     console.log(this.users);
+  //   });
+  // }
+
   getNumberOfRepos() {
     this.restProvider.getNumberOfRepos()
     .then(data => {
@@ -39,8 +47,18 @@ export class FeedPage {
   }
 
 
-  addUsersOnScroll() {
+  addUsersOnScroll(infiniteScroll) {
+    console.log("Begin async operation");
+    this.restProvider.addUsersOnScroll()
+    .then(data => {
+      setTimeout(() => {
+        for (let i = 0; i < data.length; i++) {
+          this.users.push( data[i] );
+        }
+      console.log("Async operation has ended");
+      //addUsersOnScroll.complete();
+      }, 500);
+    })
 
   }
-
 }

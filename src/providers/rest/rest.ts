@@ -11,6 +11,7 @@ import { Injectable } from '@angular/core';
 export class RestProvider {
 
   apiUrl = "https://api.github.com";
+  userListCounter = 30;
 
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
@@ -38,10 +39,22 @@ export class RestProvider {
     });
   }
 
-  getUser(username) {
+  // getUser(username) {
+  //   return new Promise(resolve => {
+  //     this.http.get(this.apiUrl+`/users/${username}`).subscribe(data => {
+  //       resolve(data);
+  //     }, err => {
+  //       console.log(err);
+  //     });
+  //   });
+  // }
+
+  addUsersOnScroll() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+`/users/${username}`).subscribe(data => {
+      this.http.get(this.apiUrl+"/users?since="+this.userListCounter)
+      .subscribe(data => {
         resolve(data);
+        this.userListCounter += 30;
       }, err => {
         console.log(err);
       });
