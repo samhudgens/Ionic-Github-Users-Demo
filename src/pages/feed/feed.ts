@@ -11,7 +11,7 @@ import { RestProvider } from "../../providers/rest/rest";
 })
 export class FeedPage {
 
-  users: any[];
+  // users: any[];
   numberOfRepos: any;
 
   users = [];
