@@ -7,5 +7,6 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-searchbar [(ngModel)]="searchQuery" (search)="getUser()"></ion-searchbar>
+  <ion-item>{{user}}</ion-item>
 </ion-content>

@@ -16,10 +16,11 @@ export class RestProvider {
     console.log('Hello RestProvider Provider');
   }
 
-  getUsers() {
+  getAllUsers() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl+"/users").subscribe(data => {
         resolve(data);
+        console.log(this.http.head(this.apiUrl+"/users"));
       }, err => {
         console.log(err);
       });
@@ -30,6 +31,16 @@ export class RestProvider {
   getNumberOfRepos() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl+"/users/samhudgens/repos").subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getUser(username) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+`/users/${username}`).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

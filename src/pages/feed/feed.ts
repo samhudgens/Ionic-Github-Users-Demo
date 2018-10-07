@@ -15,11 +15,11 @@ export class FeedPage {
   numberOfRepos: any;
 
   constructor(public navCtrl: NavController, public restProvider: RestProvider) {
-    this.getUsers();
+    this.getAllUsers();
   }
 
-  getUsers() {
-    this.restProvider.getUsers()
+  getAllUsers() {
+    this.restProvider.getAllUsers()
     .then(data => {
       this.users = data;
       console.log(this.users);
