@@ -10,7 +10,23 @@
   <ion-searchbar [(ngModel)]="searchQuery" (search)="getUserByLogin($event)"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let result of results">
-      {{ result }}
+      <!-- <p>{{ result }}</p>
+      <p>{{ result.login }}</p> -->
+      <ion-card>
+        <img [src]="result.avatar_url" width="100" />
+        <ion-card-header>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-card-title>
+            {{ result.name }}
+          </ion-card-title>
+          <p>{{ result.bio }}</p>
+          <p>{{ result.company }}</p>
+          <p>{{ result.location }}</p>
+          <a>{{ result.blog }}</a>
+        </ion-card-content>
+      </ion-card>
+
     </ion-item>
   </ion-list>
 </ion-content>

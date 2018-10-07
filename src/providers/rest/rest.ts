@@ -33,7 +33,8 @@ export class RestProvider {
 
   getUserByLogin(login) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+"/search/users?q="+login+"+in:login").subscribe(data => {
+      // Old search query string: (this.apiUrl+"/search/users?q="+login+"+in:login")
+      this.http.get(this.apiUrl+"/users/"+login).subscribe(data => {
         resolve(data);
         console.log(data);
       }, err => {

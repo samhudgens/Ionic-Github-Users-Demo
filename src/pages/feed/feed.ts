@@ -24,7 +24,7 @@ export class FeedPage {
   getAllUsers() {
     this.restProvider.getAllUsers(this.since)
     .then(data => {
-        for (let i = 0; i < data.length; i++) {
+        for (let i = 0; i < 30; i++) {
           this.users.push(data[i]);
         }
         // this.since += 30;
@@ -40,7 +40,7 @@ export class FeedPage {
     .then(data => {
       console.log(data);
       setTimeout(() => {
-        for (let i = 0; i < data.length; i++) {
+        for (let i = 0; i < 30; i++) {
           this.users.push( data[i] );
         }
         console.log(this.users);
