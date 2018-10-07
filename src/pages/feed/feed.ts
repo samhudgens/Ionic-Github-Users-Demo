@@ -11,17 +11,21 @@ import { RestProvider } from "../../providers/rest/rest";
 })
 export class FeedPage {
 
-  users: any;
+  users: any[];
   numberOfRepos: any;
 
+  users = [];
+
   constructor(public navCtrl: NavController, public restProvider: RestProvider) {
-    this.getUsers();
+    this.getAllUsers();
   }
 
-  getUsers() {
-    this.restProvider.getUsers()
+  getAllUsers() {
+    this.restProvider.getAllUsers()
     .then(data => {
-      this.users = data;
+        for (let i = 0; i < data.length; i++) {
+          this.users.push(data[i]);
+        }
       console.log(this.users);
     });
   }
@@ -32,6 +36,11 @@ export class FeedPage {
       this.numberOfRepos = data;
       console.log(this.numberOfRepos);
     });
+  }
+
+
+  addUsersOnScroll() {
+
   }
 
 }
