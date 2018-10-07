@@ -20,16 +20,6 @@ export class RestProvider {
     console.log('Hello RestProvider Provider');
   }
 
-  // getAllUsers() {
-  //   return new Promise(resolve => {
-  //     this.http.get(this.apiUrl+"/users").subscribe(data => {
-  //       resolve(data);
-  //       // console.log(this.http.head(this.apiUrl+"/users"));
-  //     }, err => {
-  //       console.log(err);
-  //     });
-  //   });
-  // }
 
   getAllUsers(since) {
     return new Promise(resolve => {
@@ -41,39 +31,63 @@ export class RestProvider {
     });
   }
 
-  getNumberOfRepos() {
+  getUserByLogin(login) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+"/users/samhudgens/repos").subscribe(data => {
+      this.http.get(this.apiUrl+"/search/users?q="+login+"+in:login").subscribe(data => {
         resolve(data);
+        console.log(data);
       }, err => {
         console.log(err);
-      });
-    });
+      })
+    })
   }
 
-  // getUser(username) {
-  //   return new Promise(resolve => {
-  //     this.http.get(this.apiUrl+`/users/${username}`).subscribe(data => {
-  //       resolve(data);
-  //     }, err => {
-  //       console.log(err);
-  //     });
-  //   });
-  // }
-
-  // addUsersOnScroll() {
-  //   this.userListCounter = 30;
-  //   return new Promise(resolve => {
-  //     console.log(this.apiUrl+"/users?since="+this.userListCounter);
-  //     this.http.get(this.apiUrl+"/users?since="+this.userListCounter)
-  //     .subscribe(data => {
-  //       resolve(data);
-  //       this.userListCounter += 30;
-  //       console.log(this.apiUrl+"/users?since="+this.userListCounter);
-  //     }, err => {
-  //       console.log(err);
-  //     });
-  //   });
-  // }
-
 }
+
+
+// getNumberOfRepos() {
+//   return new Promise(resolve => {
+//     this.http.get(this.apiUrl+"/users/samhudgens/repos").subscribe(data => {
+//       resolve(data);
+//     }, err => {
+//       console.log(err);
+//     });
+//   });
+// }
+
+
+// getAllUsers() {
+//   return new Promise(resolve => {
+//     this.http.get(this.apiUrl+"/users").subscribe(data => {
+//       resolve(data);
+//       // console.log(this.http.head(this.apiUrl+"/users"));
+//     }, err => {
+//       console.log(err);
+//     });
+//   });
+// }
+
+// getUser(username) {
+//   return new Promise(resolve => {
+//     this.http.get(this.apiUrl+`/users/${username}`).subscribe(data => {
+//       resolve(data);
+//     }, err => {
+//       console.log(err);
+//     });
+//   });
+// }
+
+// addUsersOnScroll() {
+//   this.userListCounter = 30;
+//   return new Promise(resolve => {
+//     console.log(this.apiUrl+"/users?since="+this.userListCounter);
+//     this.http.get(this.apiUrl+"/users?since="+this.userListCounter)
+//     .subscribe(data => {
+//       resolve(data);
+//       this.userListCounter += 30;
+//       console.log(this.apiUrl+"/users?since="+this.userListCounter);
+//     }, err => {
+//       console.log(err);
+//     });
+//   });
+// }

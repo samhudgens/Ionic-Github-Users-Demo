@@ -32,22 +32,6 @@ export class FeedPage {
     });
   }
 
-  // getUsers() {
-  //   this.restProvider.getUsers()
-  //   .then(data => {
-  //     this.users = data;
-  //     console.log(this.users);
-  //   });
-  // }
-
-  getNumberOfRepos() {
-    this.restProvider.getNumberOfRepos()
-    .then(data => {
-      this.numberOfRepos = data;
-      console.log(this.numberOfRepos);
-    });
-  }
-
 
   addUsersOnScroll(infiniteScroll) {
     this.since += 30;
@@ -69,3 +53,20 @@ export class FeedPage {
   }
 
 }
+
+
+// getUsers() {
+//   this.restProvider.getUsers()
+//   .then(data => {
+//     this.users = data;
+//     console.log(this.users);
+//   });
+// }
+
+// getNumberOfRepos() {
+//   this.restProvider.getNumberOfRepos()
+//   .then(data => {
+//     this.numberOfRepos = data;
+//     console.log(this.numberOfRepos);
+//   });
+// }

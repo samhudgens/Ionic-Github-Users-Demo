@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { RestProvider } from "../../providers/rest/rest";
 
 @Component({
   selector: 'page-user-search',
@@ -7,8 +8,20 @@ import { NavController } from 'ionic-angular';
 })
 export class UserSearchPage {
 
-  constructor(public navCtrl: NavController) {
+  // searchQuery: string = "";
+  results: any;
 
+  constructor(public navCtrl: NavController, public restProvider: RestProvider) {
+    this.getUserByLogin();
+  }
+
+  getUserByLogin(ev: any) {
+    const userQuery = ev.target.value;
+    this.restProvider.getUserByLogin(userQuery)
+    .then(data => {
+      this.results = data;
+      console.log(this.user);
+    });
   }
 
 }
