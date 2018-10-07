@@ -26,9 +26,10 @@ export class RestProvider {
     });
   }
 
+
   getNumberOfRepos() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+"/users/heff/repos").subscribe(data => {
+      this.http.get(this.apiUrl+"/users/samhudgens/repos").subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
