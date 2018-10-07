@@ -26,6 +26,7 @@ export class FeedPage {
         for (let i = 0; i < data.length; i++) {
           this.users.push(data[i]);
         }
+        console.log(data);
       console.log(this.users);
     });
   }
@@ -51,10 +52,13 @@ export class FeedPage {
     console.log("Begin async operation");
     this.restProvider.addUsersOnScroll()
     .then(data => {
+      console.log(data);
       setTimeout(() => {
         for (let i = 0; i < data.length; i++) {
           this.users.push( data[i] );
         }
+        console.log(this.users);
+        console.log(data);
       console.log("Async operation has ended");
       //addUsersOnScroll.complete();
       }, 500);

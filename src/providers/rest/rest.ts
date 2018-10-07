@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+
 /*
   Generated class for the RestProvider provider.
 
@@ -11,7 +12,7 @@ import { Injectable } from '@angular/core';
 export class RestProvider {
 
   apiUrl = "https://api.github.com";
-  userListCounter = 30;
+
 
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
@@ -50,11 +51,14 @@ export class RestProvider {
   // }
 
   addUsersOnScroll() {
+    this.userListCounter = 30;
     return new Promise(resolve => {
+      console.log(this.apiUrl+"/users?since="+this.userListCounter);
       this.http.get(this.apiUrl+"/users?since="+this.userListCounter)
       .subscribe(data => {
         resolve(data);
         this.userListCounter += 30;
+        console.log(this.apiUrl+"/users?since="+this.userListCounter);
       }, err => {
         console.log(err);
       });
