@@ -12,8 +12,9 @@
     <ion-item *ngFor="let result of results">
       <!-- <p>{{ result }}</p>
       <p>{{ result.login }}</p> -->
-      <ion-card>
-        <img [src]="result.avatar_url" width="100" />
+      <img [src]="result.avatar_url" width="100" item-left/>
+      <ion-card item-right>
+
         <ion-card-header>
         </ion-card-header>
         <ion-card-content>
